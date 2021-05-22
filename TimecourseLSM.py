@@ -50,6 +50,9 @@ class Plotcrap:
         self.col2 = np.array(self.csv[:,2], dtype = float)
         self.col3 = np.array(self.csv[:,3], dtype = int)
         self.col4 = np.array(self.csv[:,4], dtype = int)
+        self.col5 = np.array(self.csv[:, 5], dtype=float)
+        self.col6 = np.array(self.csv[:, 6], dtype=float)
+
         # print(self.col4)
 
     def plotthecsv(self):
@@ -57,7 +60,8 @@ class Plotcrap:
         fig = plt.figure(figsize=(6, 9))
 
         ax = fig.add_subplot(3, 1, 1)
-        ax.scatter(self.col0, self.col3, s=3, color=[0, 0, 0], label='ROI 1')
+        ax.scatter(self.col0, self.col3, s=3, color=[1, 0, 0], label='ROI 1')
+        ax.scatter(self.col0, self.col4, s=3, color=[0, 1, 0], label='ROI 2')
         # Here we set x and y labels as strings, they can be whatever you want them to be
         ax.set_xlabel('Frame')
         self.fig1y=input('Figure 1 Y - title')
@@ -75,7 +79,8 @@ class Plotcrap:
         #     label.set_visible(False)
 
         bx = fig.add_subplot(3, 1, 2)
-        bx.scatter(self.col0, self.col4, s=3, color=[0, 0, 0])
+        bx.scatter(self.col0, self.col5, s=3, color=[1, 0, 0], label='ROI 1')
+        bx.scatter(self.col0, self.col6, s=3, color=[0, 1, 0], label='ROI 2')
         # Here we set x and y labels as strings, they can be whatever you want them to be
         bx.set_xlabel('Frame')
         self.fig2y=input('Figure 2 Y - title')
@@ -86,7 +91,7 @@ class Plotcrap:
         bx.spines['top'].set_visible(False)
         bx.yaxis.set_ticks_position('left')
         bx.xaxis.set_ticks_position('bottom')
-
+        plt.legend(loc='lower left')
         # bx.xaxis.set_tick_params(rotation=90)
         # tempaxis2 = bx.xaxis.get_ticklabels()
         # tempaxis2 = list(set(tempaxis2) - set(tempaxis2[::rangeofint]))
